@@ -30,18 +30,18 @@ Inside resources package are sql files for database.
 # Project functionality
 User registration
 
- For users:
+For users:
 
-•View and edit profile
+      •View and edit profile
 
-•View tours
+      •View tours
 
-•Create and delete orders, if tour is still availible 
+      •Create and delete orders, if tour is still availible 
 
  For admin:
 
-•Edit and create tours
+      •Edit and create tours
 
-•Confirm orders
+      •Confirm orders
 
-•Ban/unban users
+      •Ban/unban users
