@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="htmlhead">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Orders</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css" />
+
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light color" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Tour agency admin page</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/tourform">Create/Edite tours</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/users">Ban users</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/ordersform">Confirm orders<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/tours">Go to page for users</a>
+            </li>
+        </ul>
+        <div class="collapse navbar-text">
+            <span th:inline="text" style="margin-right: 20px">Welcome, [[${#httpServletRequest.remoteUser}]]!</span>
+            <form th:action="@{/logout}" method="post" style="display: inline-block">
+                <button type="submit" class="btn btn-light btn-sm">Log out</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-lg-offset-3">
+            <img src="/logo.png" style="width:100%;"/>
+        </div>
+    </div>
+    <div class="page-header" id="banner">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <h1>Orders</h1>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Location</th>
+                        <th>Date of Order</th>
+                        <th>Confirmed</th>
+                        <th>Actions</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="order : ${orders}">
+                        <td th:text="${order.getId()}"></td>
+                        <td th:text="${order.getWho_take().getFirstName() + ' ' + order.getWho_take().getLastName()}"></td>
+                        <td th:text="${order.getTours().getLocation()}"></td>
+                        <td th:text="${order.getTimeKey()}"></td>
+                        <td th:text="${order.isConfirmed()}"></td>
+                        <td><a th:href="${'/order/confirm/' + order.id}"class="btn btn-light btn-sm" role="button">Confirm</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div th:replace="fragments/footer :: footer">...</div>
+</div>
+</html>

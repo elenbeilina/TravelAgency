@@ -1,0 +1,4 @@
+INSERT INTO public.tours (tour_id, count_limit, description, location, name, start_date, end_date) VALUES (1, 4, 'Hot', 'Turkey', 'Tour#1', '2019-11-21', '2019-11-30');
+INSERT INTO public.tours (tour_id, count_limit, description, location, name, start_date, end_date) VALUES (3, 7, 'Norm', 'Voronezh', 'Tour#3', '2018-11-12', '2018-11-17');
+INSERT INTO public.tours (tour_id, count_limit, description, location, name, start_date, end_date) VALUES (4, 9, 'Super Cool', 'New-York', 'Tour#4', '2013-11-25', '2021-07-22');
+INSERT INTO public.tours (tour_id, count_limit, description, location, name, start_date, end_date) VALUES (2, 9, 'Cold', 'Norway', 'Tour#2', '2018-12-11', '2018-11-23');

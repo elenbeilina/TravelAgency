@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="htmlhead">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>User management</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css" />
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light color" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Tour agency admin page</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/tourform">Create/Edite tours</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/users">Ban user<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/ordersform">Confirm orders</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/tours">Go to page for users</a>
+            </li>
+        </ul>
+        <div class="collapse navbar-text">
+            <span th:inline="text" style="margin-right: 20px">Welcome, [[${#httpServletRequest.remoteUser}]]!</span>
+            <form th:action="@{/logout}" method="post" style="display: inline-block">
+                <button type="submit" class="btn btn-light btn-sm">Log out</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-lg-offset-3">
+            <img src="/logo.png" style="width:100%;"/>
+        </div>
+    </div>
+    <div class="page-header" id="banner">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <h1>Users</h1>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Username</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>E-mail</th>
+                        <th>Birthday</th>
+                        <th>Active</th>
+                        <th>Ban</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.getId()}"></td>
+                        <td th:text="${user.getUsername()}"></td>
+                        <td th:text="${user.getFirstName()}"></td>
+                        <td th:text="${user.getLastName()}"></td>
+                        <td th:text="${user.getEmail()}"></td>
+                        <td th:text="${user.getBirthday()}"></td>
+                        <td th:text="${user.isActive()}"></td>
+                        <td><a th:href="${'/user/ban/' + user.id}"class="btn btn-danger" role="button">On</a></td>
+                        <td><a th:href="${'/user/unban/' + user.id}"class="btn btn-success" role="button">Off</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div th:replace="fragments/footer :: footer">...</div>
+</div>
+
+</body>
+</html>

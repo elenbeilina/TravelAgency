@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Log in</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css" />
+    <link rel="stylesheet" th:href="@{/css/signin.css}" href="/css/signin.css" />
+</head>
+<body class="text-center">
+<form class="form-signin" th:action="@{/login}" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+    <div th:if="${param.error}">
+        Wrong username or password
+    </div>
+    <div th:if="${param.logout}">
+        You logged out.
+    </div>
+    <label for="username" class="sr-only">Username</label>
+    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sing in</button>
+</form>
+<form class="form-signin" th:action="@{/registration}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
+</form>
+</body>
+</html>

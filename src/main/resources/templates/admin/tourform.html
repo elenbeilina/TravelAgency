@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="htmlhead">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tours</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css" />
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light color" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Tour agency admin page</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/tourform">Create/Edite tours<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/users">Ban users</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/ordersform">Confirm orders</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/tours">Ban users</a>
+            </li>
+        </ul>
+        <div class="collapse navbar-text">
+            <span th:inline="text" style="margin-right: 20px">Welcome, [[${#httpServletRequest.remoteUser}]]!</span>
+            <form th:action="@{/logout}" method="post" style="display: inline-block">
+                <button type="submit" class="btn btn-light btn-sm">Log out</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-lg-offset-3">
+            <img src="/logo.png" style="width:100%;"/>
+        </div>
+    </div>
+    <div class="page-header" id="banner">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <h1>Tours</h1>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Dates</th>
+                        <th>Vouchers left</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="tour : ${tours}">
+                        <td th:text="${tour.getName()}"></td>
+                        <td th:text="${tour.getDescription()}"></td>
+                        <td th:text="${tour.getLocation()}"></td>
+                        <td th:text="${tour.getStartDate() + '-' + tour.getEndDate()}"></td>
+                        <td th:text="${tour.getCountLimit()}"></td>
+                        <td><a th:href="${'/tour/edit/' + tour.id}"class="btn btn-light btn-sm" role="button">Edit</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="row navigation-order">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <a href="/tour/new"class="btn btn-light btn-sm" role="button">Click here to add new tour</a>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer">...</div>
+</div>
+
+</body>
+</html>
