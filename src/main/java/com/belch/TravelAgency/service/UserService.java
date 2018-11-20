@@ -25,14 +25,11 @@ public class UserService implements UserServiceInterface {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
-//        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-//        user.setBirthday(format1.format(user.getBirthday()));
-
-
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);

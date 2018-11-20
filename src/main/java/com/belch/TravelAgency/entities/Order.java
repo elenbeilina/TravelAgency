@@ -1,7 +1,6 @@
 package com.belch.TravelAgency.entities;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import javax.persistence.Column;

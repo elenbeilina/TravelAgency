@@ -63,7 +63,7 @@
                         <td th:text="${tour.getName()}"></td>
                         <td th:text="${tour.getDescription()}"></td>
                         <td th:text="${tour.getLocation()}"></td>
-                        <td th:text="${tour.getStartDate() + '-' + tour.getEndDate()}"></td>
+                        <td th:text="${tour.getStartDate() + ' - ' + tour.getEndDate()}"></td>
                         <td th:text="${tour.getCountLimit()}"></td>
                         <td><a th:href="${'/tour/edit/' + tour.id}"class="btn btn-light btn-sm" role="button">Edit</a></td>
                     </tr>

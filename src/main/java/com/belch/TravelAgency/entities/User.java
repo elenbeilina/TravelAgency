@@ -43,7 +43,6 @@ public class User implements Serializable{
 
     private boolean active;
 
-
     private Date birthday;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)

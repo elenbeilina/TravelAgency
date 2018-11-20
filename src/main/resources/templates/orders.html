@@ -85,13 +85,18 @@
                     <tr th:each="order : ${orders}">
                         <td th:text="${order.getTours().getName()}"></td>
                         <td th:text="${order.getTimeKey()}"></td>
-                        <td th:text="${order.getTours().getStartDate() + '-' + order.getTours().getEndDate()}"></td>
+                        <td th:text="${order.getTours().getStartDate() + '  -  ' + order.getTours().getEndDate()}"></td>
                         <td th:text="${order.isConfirmed()}"></td>
                         <td><a th:href="${'/removeorder/' + order.id}"class="btn btn-warning" role="button">Delete order</a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-md-7 col-sm-6">
+            <a href="/tours">Go to tours page</a>
         </div>
     </div>
     <div th:replace="fragments/footer :: footer">...</div>
