@@ -1,6 +1,6 @@
 # TravelAgency
 
-TravelAgency project is demonstrating how to implement Travel agency fanctions.
+TravelAgency project is demonstrating how to implement Travel agency functions.
 
 # What's inside
 This project is based on [Spring Boot](http://projects.spring.io/spring-boot/) and uses these packages :
