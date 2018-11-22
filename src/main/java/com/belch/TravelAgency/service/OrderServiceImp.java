@@ -12,10 +12,6 @@ public class OrderServiceImp implements OrderService{
     private OrderRepository orderRepository;
 
     @Override
-    public Order getOrderById(Long id) {
-        return orderRepository.findOrderById(id);
-    }
-    @Override
     public void confirmOrder(Long id) {
         Order order = orderRepository.getOne(id);
         order.setConfirmed(true);
